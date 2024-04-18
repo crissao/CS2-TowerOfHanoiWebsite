@@ -1,0 +1,15 @@
+.header-content {
+    background-color: rgb(128, 93, 37);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+.instructions {
+    position: absolute;
+    width: 25px;
+    top: 35px;
+    right: 15px;
+    background-color: rgb(244, 248, 128);
+}
