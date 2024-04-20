@@ -4,3 +4,39 @@
     padding: 10px;
     text-align: center;
 }
+#instruction-button {
+    position: absolute;
+    width: 25px;
+    top: 85px;
+    right: 15px;
+    background-color: rgb(255, 247, 0);
+}
+#instructions {
+    background-color: rgba(125, 127, 128, 0.434);
+    color: white;
+    font-size: 15px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    text-align: left;
+    padding: 25px;
+    top: 150px;
+    order: 1;
+    margin: 70px;
+}
+#X-out {
+    background-color: red;
+    color: white;
+    position: absolute;
+    right: 85px;
+    top: 160px;
+}
+#rings-variant {
+    position: absolute;
+    top: 85px;
+    order: 2;
+}
+#creator {
+    position: absolute;
+    color: black;
+    top: 420px;
+    left: 15px;
+}

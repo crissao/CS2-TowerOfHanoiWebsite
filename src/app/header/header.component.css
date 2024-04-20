@@ -6,26 +6,3 @@
     font-weight: bold;
     text-align: center;
 }
-#instruction_button {
-    position: absolute;
-    width: 25px;
-    top: 35px;
-    right: 15px;
-    background-color: rgb(255, 255, 255);
-}
-#instructions {
-    background-color: rgba(125, 127, 128, 0.434);
-    color: white;
-    font-size: 5px;
-    text-align: left;
-    padding: 500px;
-    top: 100px;
-}
-#X-out {
-    background-color: red;
-    color: white;
-    position: relative;
-    padding: 5px;
-    right: 5px;
-    top: 5px;
-}
