@@ -1,15 +1,31 @@
 .header-content {
-    background-color: rgb(128, 93, 37);
+    background-color: rgb(239, 187, 105);
     color: rgb(255, 255, 255);
     padding: 10px;
     font-size: 30px;
     font-weight: bold;
     text-align: center;
 }
-.instructions {
+#instruction_button {
     position: absolute;
     width: 25px;
     top: 35px;
     right: 15px;
-    background-color: rgb(244, 248, 128);
+    background-color: rgb(255, 255, 255);
+}
+#instructions {
+    background-color: rgba(125, 127, 128, 0.434);
+    color: white;
+    font-size: 5px;
+    text-align: left;
+    padding: 500px;
+    top: 100px;
+}
+#X-out {
+    background-color: red;
+    color: white;
+    position: relative;
+    padding: 5px;
+    right: 5px;
+    top: 5px;
 }
