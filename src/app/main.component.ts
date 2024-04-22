@@ -23,11 +23,8 @@ export class MainComponent extends EzComponent {
     private rod1: RodComponent = new RodComponent();
     private rod2: RodComponent = new RodComponent();
     private rod3: RodComponent = new RodComponent();
-    private rodlist1: RingComponent[] = [];
-    private rodlist2: RingComponent[] = [];
-    private rodlist3: RingComponent[] = [];
-    private selectedSourceRod: string = "";
-    private selectedDestinationRod: string = "";
+    private sourcerod: RodComponent | null = null;
+    private destinationrod: RodComponent | null = null;
     @BindVisibleToBoolean("instructions")
     private visible: boolean = true;
     @BindValue("rings-variant")
@@ -55,8 +52,6 @@ export class MainComponent extends EzComponent {
     }
     @Click("start")
     onStart() {
-        this.rodlist2 = [];
-        this.rodlist3 = [];
         if (this.rings_variant === "three") {
             const ring1 = new RingComponent(200, 1);
             this.addComponent(ring1);
@@ -64,7 +59,7 @@ export class MainComponent extends EzComponent {
             this.addComponent(ring2);
             const ring3 = new RingComponent(150, 1);
             this.addComponent(ring3);
-            this.rodlist1.push(ring1, ring2, ring3);
+            this.rod1.setRings([ring1, ring2, ring3]);
         } else if (this.rings_variant === "five") {
             const ring1 = new RingComponent(200, 1);
             this.addComponent(ring1);
@@ -76,7 +71,7 @@ export class MainComponent extends EzComponent {
             this.addComponent(ring4);
             const ring5 = new RingComponent(100, 1);
             this.addComponent(ring5);
-            this.rodlist1.push(ring1, ring2, ring3, ring4, ring5);
+            this.rod1.setRings([ring1, ring2, ring3, ring4, ring5]);
         } else {
             const ring1 = new RingComponent(200, 1);
             this.addComponent(ring1);
@@ -92,62 +87,59 @@ export class MainComponent extends EzComponent {
             this.addComponent(ring6);
             const ring7 = new RingComponent(50, 1);
             this.addComponent(ring7);
-            this.rodlist1.push(ring1, ring2, ring3, ring4, ring5, ring6, ring7);
+            this.rod1.setRings([ring1, ring2, ring3, ring4, ring5, ring6, ring7]);
         }
     }
     @Click("rod1")
+    onRod1Click(){
+        this.onRodClicks(this.rod1)
+    }
     @Click("rod2")
+    onRod2Click(){
+        this.onRodClicks(this.rod2);
+    }
     @Click("rod3")
-    onRodClick(event: MouseEvent) {
-        const rodId = (event.target as HTMLElement).getAttribute("id");
-        if (rodId) {
-            if (this.selectedSourceRod === "") {
-                this.selectedSourceRod = rodId;
-            } else if (this.selectedDestinationRod === "") {
-                this.selectedDestinationRod = rodId;
-                this.moveRing(
-                    this.selectedSourceRod,
-                    this.selectedDestinationRod,
-                );
-                // Reset selected rods for the next move
-                this.selectedSourceRod = "";
-                this.selectedDestinationRod = "";
-            }
+    onRod3Click(){
+        this.onRodClicks(this.rod3);
+    }
+    onRodClicks(rod: RodComponent) {
+        if (this.sourcerod === null) {
+            this.sourcerod = rod;
+        } else if (this.destinationrod === null) {
+            this.destinationrod = rod;
+            this.moveRing(
+                this.sourcerod,
+                this.destinationrod,
+            );
+            this.sourcerod = null;
+            this.destinationrod = null;
         }
     }
-    moveRing(sourceRod: string, destinationRod: string) {
-        const sourceList = this.getRodList(sourceRod);
-        const destinationList = this.getRodList(destinationRod);
+    moveRing(sourcerod: RodComponent, destinationrod: RodComponent) {
+        const sourcelist = sourcerod.getRings();
+        const destinationlist = destinationrod.getRings();
 
-        if (sourceList.length === 0) {
+        if (sourcelist.length === 0) {
             EzDialog.popup(this, "Source rod is empty.");
             return;
-        } 
-        const movedRing = sourceList.pop();
-        if (!movedRing) {
+        }
+        const movedring = sourcelist.pop();
+        if (!movedring) {
             return;
         }
         if (
-            destinationList.length > 0 &&
-            destinationList[-1].size < movedRing.size
+            destinationlist.length > 0 &&
+            destinationlist[-1].size < movedring.size
         ) {
             EzDialog.popup(
                 this,
                 "Cannot stack larger ring on top of smaller ring.",
             );
             return;
-        }
-        
-    }
-    getRodList(rodId: string): RingComponent[] {
-        if (rodId === "rodlist1") {
-            return this.rodlist1;
-        } else if (rodId === "rodlist2") {
-            return this.rodlist2;
-        } else if (rodId === "rodlist3") {
-            return this.rodlist3;
         } else {
-            throw new Error("error")
+            destinationlist.push(movedring);
+            sourcerod.setRings(sourcelist);
+            destinationrod.setRings(destinationlist)
         }
     }
 }
