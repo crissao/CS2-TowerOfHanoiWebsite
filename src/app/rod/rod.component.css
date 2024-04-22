@@ -1,4 +1,14 @@
-.rods{
-    shape-rendering: optimizeSpeed;
-    size: 20px;
+.rod {
+  width: 25px;
+  height: 200px;
+  background: rgb(53, 35, 2);
 }
+#base{
+    width: 200px;
+    height: 25px;
+    background: rgb(53, 35, 2);
+    top: 200px;
+    right: 87px;
+    position: relative;
+}
+

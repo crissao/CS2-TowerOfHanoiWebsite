@@ -6,4 +6,5 @@ export class RodComponent extends EzComponent {
     constructor() {
         super(html, css);
     }
+    
 }

@@ -12,22 +12,24 @@
     background-color: rgb(255, 247, 0);
 }
 #instructions {
-    background-color: rgba(125, 127, 128, 0.434);
+    position: absolute;
+    background-color: rgba(125, 127, 128, 0.753);
     color: white;
-    font-size: 15px;
+    font-size: 20px;
     font-family: Georgia, "Times New Roman", Times, serif;
     text-align: left;
     padding: 25px;
-    top: 150px;
-    order: 1;
+    top: 125px;
+    left: 215px;
     margin: 70px;
+    z-index: 2;
 }
 #X-out {
     background-color: red;
     color: white;
     position: absolute;
-    right: 85px;
-    top: 160px;
+    right: 10px;
+    top: 10px;
 }
 #rings-variant {
     position: absolute;
@@ -39,4 +41,40 @@
     color: black;
     top: 420px;
     left: 15px;
+}
+#rod1 {
+    background-color: rgb(251, 255, 3);
+    position: absolute;
+    top: 200px;
+    left: 350px;
+    z-index: auto;
+}
+#rod2 {
+    background-color: rgb(104, 57, 11);
+    position: absolute;
+    top: 200px;
+    left: 700px;
+    z-index: auto;
+}
+#rod3 {
+    background-color: rgb(104, 57, 11);
+    position: absolute;
+    top: 200px;
+    left: 1050px;
+    z-index: auto;
+}
+
+#rodlist1 {
+    top: 200px;
+    left: 350px;
+}
+
+#rodlist2 {
+    top: 200px;
+    left: 700px;
+}
+
+#rodlist3 {
+    top: 200px;
+    left: 1050px;
 }
