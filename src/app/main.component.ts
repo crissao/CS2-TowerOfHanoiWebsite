@@ -52,42 +52,58 @@ export class MainComponent extends EzComponent {
     }
     @Click("start")
     onStart() {
-        if (this.rings_variant === "three") {
-            const ring1 = new RingComponent(200, 1);
-            this.addComponent(ring1);
-            const ring2 = new RingComponent(175, 1);
-            this.addComponent(ring2);
-            const ring3 = new RingComponent(150, 1);
-            this.addComponent(ring3);
-            this.rod1.setRings([ring1, ring2, ring3]);
-        } else if (this.rings_variant === "five") {
-            const ring1 = new RingComponent(200, 1);
-            this.addComponent(ring1);
-            const ring2 = new RingComponent(175, 1);
-            this.addComponent(ring2);
-            const ring3 = new RingComponent(150, 1);
-            this.addComponent(ring3);
-            const ring4 = new RingComponent(125, 1);
-            this.addComponent(ring4);
-            const ring5 = new RingComponent(100, 1);
-            this.addComponent(ring5);
-            this.rod1.setRings([ring1, ring2, ring3, ring4, ring5]);
+        if (
+            this.rod1.getRings().length === 0 &&
+            this.rod2.getRings().length === 0 &&
+            this.rod3.getRings().length === 0
+        ){
+            if (this.rings_variant === "three") {
+                const ring1 = new RingComponent(200);
+                this.addComponent(ring1);
+                const ring2 = new RingComponent(175);
+                this.addComponent(ring2);
+                const ring3 = new RingComponent(150);
+                this.addComponent(ring3);
+                this.rod1.setRings([ring1, ring2, ring3]);
+            } else if (this.rings_variant === "five") {
+                const ring1 = new RingComponent(200);
+                this.addComponent(ring1);
+                const ring2 = new RingComponent(175);
+                this.addComponent(ring2);
+                const ring3 = new RingComponent(150);
+                this.addComponent(ring3);
+                const ring4 = new RingComponent(125);
+                this.addComponent(ring4);
+                const ring5 = new RingComponent(100);
+                this.addComponent(ring5);
+                this.rod1.setRings([ring1, ring2, ring3, ring4, ring5]);
+            } else {
+                const ring1 = new RingComponent(200);
+                this.addComponent(ring1);
+                const ring2 = new RingComponent(175);
+                this.addComponent(ring2);
+                const ring3 = new RingComponent(150);
+                this.addComponent(ring3);
+                const ring4 = new RingComponent(125);
+                this.addComponent(ring4);
+                const ring5 = new RingComponent(100);
+                this.addComponent(ring5);
+                const ring6 = new RingComponent(75);
+                this.addComponent(ring6);
+                const ring7 = new RingComponent(50);
+                this.addComponent(ring7);
+                this.rod1.setRings([
+                    ring1,
+                    ring2,
+                    ring3,
+                    ring4,
+                    ring5,
+                    ring6,
+                    ring7,
+                ]);
+            }
         } else {
-            const ring1 = new RingComponent(200, 1);
-            this.addComponent(ring1);
-            const ring2 = new RingComponent(175, 1);
-            this.addComponent(ring2);
-            const ring3 = new RingComponent(150, 1);
-            this.addComponent(ring3);
-            const ring4 = new RingComponent(125, 1);
-            this.addComponent(ring4);
-            const ring5 = new RingComponent(100, 1);
-            this.addComponent(ring5);
-            const ring6 = new RingComponent(75, 1);
-            this.addComponent(ring6);
-            const ring7 = new RingComponent(50, 1);
-            this.addComponent(ring7);
-            this.rod1.setRings([ring1, ring2, ring3, ring4, ring5, ring6, ring7]);
+            return
         }
     }
     @Click("rod1")
@@ -124,12 +140,13 @@ export class MainComponent extends EzComponent {
             return;
         }
         const movedring = sourcelist.pop();
+
         if (!movedring) {
             return;
         }
         if (
             destinationlist.length > 0 &&
-            destinationlist[-1].size < movedring.size
+            destinationlist[destinationlist.length - 1].size < movedring.size
         ) {
             EzDialog.popup(
                 this,
@@ -139,7 +156,23 @@ export class MainComponent extends EzComponent {
         } else {
             destinationlist.push(movedring);
             sourcerod.setRings(sourcelist);
-            destinationrod.setRings(destinationlist)
+            destinationrod.setRings(destinationlist);
         }
+        if(this.rings_variant === "three" && this.rod3.getRings().length == 3){
+            EzDialog.popup(this, "You win!");
+            return
+        } else if (this.rings_variant === "five" && this.rod3.getRings().length == 5){
+            EzDialog.popup(this, "You win!");
+            return
+        } else if (this.rings_variant === "seven" && this.rod3.getRings().length == 7){
+            EzDialog.popup(this, "You win!");
+            return
+        }
+    }
+    @Click("reset")
+    onreset(){
+        this.rod1.setRings([]);
+        this.rod2.setRings([]);
+        this.rod3.setRings([]);
     }
 }

@@ -4,6 +4,7 @@ import css from "./rod.component.css";
 import { RingComponent } from "../ring/ring.component";
 
 export class RodComponent extends EzComponent {
+    private ringsContainer: HTMLElement | null = null;
     private rings: RingComponent[] = []
     constructor() {
         super(html, css);
