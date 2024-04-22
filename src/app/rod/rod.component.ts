@@ -4,19 +4,26 @@ import css from "./rod.component.css";
 import { RingComponent } from "../ring/ring.component";
 
 export class RodComponent extends EzComponent {
-    private ringsContainer: HTMLElement | null = null;
-    private rings: RingComponent[] = []
-    constructor() {
+    private rodID: string;
+    private rings: RingComponent[] = [];
+    constructor(rodID: string) {
         super(html, css);
+        this.rodID = rodID;
     }
-    setRings(rings: RingComponent[]){
+    setRings(rings: RingComponent[]) {
         this.rings = [];
-        rings.forEach((ring,index) => {
+        rings.forEach((ring, index) => {
             this.rings.push(ring);
             this.addComponent(ring, `ring${index + 1}`);
-        })
+        });
     }
-    getRings(){
+    getRings() {
         return this.rings;
+    }
+    ringTopPosition(i: number) {
+        return i * 2 - 500;
+    }
+    ringLeftPosition() {
+        return 100;
     }
 }

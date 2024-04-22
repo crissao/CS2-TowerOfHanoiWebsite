@@ -20,9 +20,9 @@ import { RingComponent } from "./ring/ring.component";
  */
 export class MainComponent extends EzComponent {
     private header: HeaderComponent = new HeaderComponent();
-    private rod1: RodComponent = new RodComponent();
-    private rod2: RodComponent = new RodComponent();
-    private rod3: RodComponent = new RodComponent();
+    private rod1: RodComponent = new RodComponent("rod1");
+    private rod2: RodComponent = new RodComponent("rod2");
+    private rod3: RodComponent = new RodComponent("rod3");
     private sourcerod: RodComponent | null = null;
     private destinationrod: RodComponent | null = null;
     @BindVisibleToBoolean("instructions")

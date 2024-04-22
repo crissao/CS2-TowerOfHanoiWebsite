@@ -1,4 +1,7 @@
 <div class="rod">
     <div id="base"></div>
-    <div id="ring" *ngFor="let ring of rings"></div>
+    <div id="ring" *ngFor="let ring of rings; let i = index"
+        [style.top.px]="calculateRingTopPosition(i)"
+        [style.left.px]="calculateRingLeftPosition()">
+    </div>
 </div>

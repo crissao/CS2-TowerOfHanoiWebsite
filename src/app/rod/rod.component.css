@@ -12,7 +12,5 @@
     position: relative;
 }
 #ring {
-    position: relative;
-    bottom: 25px;
-    left: 50px;
+    position: fixed;
 }
