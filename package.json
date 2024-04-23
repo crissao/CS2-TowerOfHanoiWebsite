@@ -46,6 +46,7 @@
         "webpack-dev-server": "^5.0.2"
     },
     "dependencies": {
+        "crypto": "^1.0.1",
         "jsdom": "^24.0.0"
     }
 }

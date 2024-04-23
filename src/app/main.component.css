@@ -8,7 +8,7 @@
     position: absolute;
     width: 25px;
     top: 85px;
-    right: 15px;
+    right: 20px;
     background-color: rgb(255, 247, 0);
 }
 #instructions {
@@ -23,6 +23,7 @@
     left: 215px;
     margin: 70px;
     z-index: 2;
+    border-radius: 10px;
 }
 #X-out {
     background-color: red;
