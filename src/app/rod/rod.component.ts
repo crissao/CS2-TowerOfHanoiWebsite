@@ -11,6 +11,9 @@ export class RodComponent extends EzComponent {
         this.rodID = rodID;
     }
     setRings(rings: RingComponent[]) {
+        this.rings.forEach((ring) => {
+            this.removeComponent(ring);
+        });
         this.rings = [];
         rings.forEach((ring, index) => {
             this.rings.push(ring);
@@ -21,7 +24,7 @@ export class RodComponent extends EzComponent {
         return this.rings;
     }
     ringTopPosition(i: number) {
-        return i * 2 - 500;
+        return i * 25 - 500;
     }
     ringLeftPosition() {
         return 100;

@@ -40,4 +40,5 @@ export class RingComponent extends EzComponent {
         this.size = size;
         this.color = getRandomColor();
     }
+
 }

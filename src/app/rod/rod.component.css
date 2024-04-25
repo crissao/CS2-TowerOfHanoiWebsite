@@ -8,9 +8,10 @@
     height: 25px;
     background: rgb(53, 35, 2);
     top: 200px;
-    right: 87px;
-    position: relative;
+    right: -87px;
+    position: absolute;
 }
 #ring {
-    position: fixed;
+    position: absolute;
+    left: 400;
 }

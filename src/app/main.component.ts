@@ -136,7 +136,7 @@ export class MainComponent extends EzComponent {
         const destinationlist = destinationrod.getRings();
 
         if (sourcelist.length === 0) {
-            EzDialog.popup(this, "Source rod is empty.");
+            EzDialog.popup(this, "Source rod is empty.", "Error:");
             return;
         }
         const movedring = sourcelist.pop();
@@ -150,7 +150,7 @@ export class MainComponent extends EzComponent {
         ) {
             EzDialog.popup(
                 this,
-                "Cannot stack larger ring on top of smaller ring.",
+                "Cannot stack larger ring on top of smaller ring.", "Error:"
             );
             return;
         } else {
@@ -158,14 +158,14 @@ export class MainComponent extends EzComponent {
             sourcerod.setRings(sourcelist);
             destinationrod.setRings(destinationlist);
         }
-        if(this.rings_variant === "three" && this.rod3.getRings().length == 3){
-            EzDialog.popup(this, "You win!");
+        if(this.rings_variant === "three" && this.rod3.getRings().length === 3){
+            EzDialog.popup(this, "You win!", "Congratulations:");
             return
-        } else if (this.rings_variant === "five" && this.rod3.getRings().length == 5){
-            EzDialog.popup(this, "You win!");
+        } else if (this.rings_variant === "five" && this.rod3.getRings().length === 5){
+            EzDialog.popup(this, "You win!", "Congratulations:");
             return
-        } else if (this.rings_variant === "seven" && this.rod3.getRings().length == 7){
-            EzDialog.popup(this, "You win!");
+        } else if (this.rings_variant === "seven" && this.rod3.getRings().length === 7){
+            EzDialog.popup(this, "You win!", "Congratulations:");
             return
         }
     }

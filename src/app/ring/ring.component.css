@@ -1,4 +1,5 @@
 #ring {
     height: 20px;
     border-radius: 5px;
+    position: relative;
 }
