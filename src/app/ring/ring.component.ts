@@ -1,7 +1,7 @@
 import {
     BindStyleToNumberAppendPx,
-    EzComponent,
     BindStyle,
+    EzComponent,
 } from "@gsilber/webez";
 import html from "./ring.component.html";
 import css from "./ring.component.css";
@@ -35,10 +35,35 @@ export class RingComponent extends EzComponent {
     size: number;
     @BindStyle("ring", "backgroundColor")
     color: string;
+    @BindStyleToNumberAppendPx("ring", "left")
+    left: number = 0;
+    @BindStyleToNumberAppendPx("ring", "top")
+    top: number = 0;
     constructor(size: number) {
         super(html, css);
         this.size = size;
         this.color = getRandomColor();
     }
-
+    setTopPosition(i: number, rodId: string) {
+        if (rodId === "rod1") {
+            this.left = i * 25 - 500;
+        }
+        if (rodId === "rod2") {
+            this.left = i * 25 - 500;
+        }
+        if (rodId === "rod3") {
+            this.left = i * 25 - 500;
+        }
+    }
+    setLeftPosition(i: number, rodId: string) {
+        if (rodId === "rod1") {
+            this.top = i * 25 - 500;
+        }
+        if (rodId === "rod2") {
+            this.top = i * 25 - 500;
+        }
+        if (rodId === "rod3") {
+            this.top = i * 25 - 500;
+        }
+    }
 }

@@ -60,39 +60,22 @@
     top: 620px;
     left: 15px;
 }
-#rod1 {
-    background-color: rgb(251, 255, 3);
+#display {
+    background-color: aqua;
     position: absolute;
-    top: 200px;
+    top: 50px;
+    height: 300px;
+    left: 5px;
+}
+#rod1 {
     left: 350px;
-    z-index: auto;
+    position: relative;
 }
 #rod2 {
-    background-color: rgb(104, 57, 11);
-    position: absolute;
-    top: 200px;
     left: 700px;
-    z-index: auto;
+    position: relative;
 }
 #rod3 {
-    background-color: rgb(104, 57, 11);
-    position: absolute;
-    top: 200px;
     left: 1050px;
-    z-index: auto;
-}
-/*
-#rodlist1 {
-    top: 200px;
-    left: 350px;
-}
-
-#rodlist2 {
-    top: 200px;
-    left: 700px;
-}
-
-#rodlist3 {
-    top: 200px;
-    left: 1050px;
+    position: relative;
 }
