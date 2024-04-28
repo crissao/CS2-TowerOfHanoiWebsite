@@ -44,26 +44,110 @@ export class RingComponent extends EzComponent {
         this.size = size;
         this.color = getRandomColor();
     }
-    setTopPosition(i: number, rodId: string) {
-        if (rodId === "rod1") {
-            this.left = i * 25 - 500;
-        }
-        if (rodId === "rod2") {
-            this.left = i * 25 - 500;
-        }
-        if (rodId === "rod3") {
-            this.left = i * 25 - 500;
-        }
-    }
     setLeftPosition(i: number, rodId: string) {
         if (rodId === "rod1") {
-            this.top = i * 25 - 500;
+            if (this.size === 200) {
+                this.left = 263;
+            } else if (this.size === 175) {
+                this.left = 263 + 12.5;
+            } else if (this.size === 150) {
+                this.left = 263 + 25;
+            } else if (this.size === 125) {
+                this.left = 263 + 37.5;
+            } else if (this.size === 100) {
+                this.left = 263 + 50;
+            } else if (this.size === 75) {
+                this.left = 263 + 62.5;
+            } else if (this.size === 50) {
+                this.left = 263 + 75;
+            }
         }
         if (rodId === "rod2") {
-            this.top = i * 25 - 500;
+            if (this.size === 200) {
+                this.left = 613;
+            } else if (this.size === 175) {
+                this.left = 613 + 12.5;
+            } else if (this.size === 150) {
+                this.left = 613 + 25;
+            } else if (this.size === 125) {
+                this.left = 613 + 37.5;
+            } else if (this.size === 100) {
+                this.left = 613 + 50;
+            } else if (this.size === 75) {
+                this.left = 613 + 62.5;
+            } else if (this.size === 50) {
+                this.left = 613 + 75;
+            }
         }
         if (rodId === "rod3") {
-            this.top = i * 25 - 500;
+            if (this.size === 200) {
+                this.left = 963;
+            } else if (this.size === 175) {
+                this.left = 963 + 12.5;
+            } else if (this.size === 150) {
+                this.left = 963 + 25;
+            } else if (this.size === 125) {
+                this.left = 963 + 37.5;
+            } else if (this.size === 100) {
+                this.left = 963 + 50;
+            } else if (this.size === 75) {
+                this.left = 963 + 62.5;
+            } else if (this.size === 50) {
+                this.left = 963 + 75;
+            }
+        }
+    }
+    setTopPosition(i: number, rodId: string) {
+        if (rodId === "rod1") {
+            if (i === 0) {
+                this.top = 280;
+            } else if (i === 1) {
+                this.top = 260;
+            } else if (i === 2) {
+                this.top = 240;
+            } else if (i === 3) {
+                this.top = 220;
+            } else if (i === 4) {
+                this.top = 200;
+            } else if (i === 5) {
+                this.top = 180;
+            } else if (i === 6) {
+                this.top = 160;
+            }
+        }
+        if (rodId === "rod2") {
+            if (i === 0) {
+                this.top = 280;
+            } else if (i === 1) {
+                this.top = 260;
+            } else if (i === 2) {
+                this.top = 240;
+            } else if (i === 3) {
+                this.top = 220;
+            } else if (i === 4) {
+                this.top = 200;
+            } else if (i === 5) {
+                this.top = 180;
+            } else if (i === 6) {
+                this.top = 160;
+            }
+        }
+        if (rodId === "rod3") {
+            if (i === 0) {
+                this.top = 280;
+            } else if (i === 1) {
+                this.top = 260;
+            } else if (i === 2) {
+                this.top = 240;
+            } else if (i === 3) {
+                this.top = 220;
+            } else if (i === 4) {
+                this.top = 200;
+            } else if (i === 5) {
+                this.top = 180;
+            } else if (i === 6) {
+                this.top = 160;
+            }
         }
     }
 }

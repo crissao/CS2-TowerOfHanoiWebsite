@@ -48,7 +48,7 @@
 }
 #rings-variant {
     position: absolute;
-    background-color: rgb(137, 240, 240);
+    background-color: rgb(255, 255, 255);
     top: 80px;
     left: 1290px;
     order: 2;
@@ -60,22 +60,23 @@
     top: 620px;
     left: 15px;
 }
-#display {
-    background-color: aqua;
-    position: absolute;
+#ring-display {
+    background-color: rgba(0, 255, 255, 0.185);
+    position: relative;
     top: 50px;
-    height: 300px;
-    left: 5px;
+    width: 1400px;
+    height: 400px;
+    left: 0px;
 }
 #rod1 {
     left: 350px;
-    position: relative;
+    position: absolute;
 }
 #rod2 {
     left: 700px;
-    position: relative;
+    position: absolute;
 }
 #rod3 {
     left: 1050px;
-    position: relative;
+    position: absolute;
 }

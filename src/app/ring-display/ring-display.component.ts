@@ -29,31 +29,28 @@ export class RingDisplayComponent extends EzComponent {
     }
 
     private clearRings(rodId: string) {
-        switch (rodId) {
-            case "rod1":
+        if (rodId === "rod1") {
                 this.rings1.forEach((ring) => this.removeComponent(ring));
                 this.rings1 = [];
-                break;
-            case "rod2":
+        } else if (rodId === "rod2"){
                 this.rings2.forEach((ring) => this.removeComponent(ring));
                 this.rings2 = [];
-                break;
-            case "rod3":
+        } else {
                 this.rings3.forEach((ring) => this.removeComponent(ring));
                 this.rings3 = [];
-                break;
-            default:
-                break;
         }
+
     }
 
     private assignRings(rod: RodComponent, rings: RingComponent[]) {
         const targetRingsArray = this.getRings(rod);
-        rings.forEach((ring, index) => {
+        rings.forEach((ring) => {
+            targetRingsArray.push(ring);
+        });
+        targetRingsArray.forEach((ring,index) => {
             ring.setTopPosition(index, rod.getId());
             ring.setLeftPosition(index, rod.getId());
-            targetRingsArray.push(ring);
-            this.addComponent(ring, `${rod.getId()[3]}ring${index + 1}`);
+            this.addComponent(ring, "ringContainer");
         });
     }
 }

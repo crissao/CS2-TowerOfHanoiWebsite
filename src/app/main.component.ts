@@ -21,7 +21,7 @@ import { RingDisplayComponent } from "./ring-display/ring-display.component";
  */
 export class MainComponent extends EzComponent {
     private header: HeaderComponent = new HeaderComponent();
-    private display: RingDisplayComponent = new RingDisplayComponent();
+    private ringDisplay: RingDisplayComponent = new RingDisplayComponent();
     private sourcerod: RodComponent | null = null;
     private destinationrod: RodComponent | null = null;
     private rod1: RodComponent = new RodComponent("rod1");
@@ -37,7 +37,7 @@ export class MainComponent extends EzComponent {
         this.addComponent(this.rod1, "rod1");
         this.addComponent(this.rod2, "rod2");
         this.addComponent(this.rod3, "rod3");
-        this.addComponent(this.display, "display");
+        this.addComponent(this.ringDisplay, "ring-display");
     }
     @Change("rings-variant")
     onRingsChange(event: ValueEvent) {
@@ -56,22 +56,22 @@ export class MainComponent extends EzComponent {
     @Click("start")
     onStart() {
         if (
-            this.display.getRings(this.rod1).length === 0 &&
-            this.display.getRings(this.rod2).length === 0 &&
-            this.display.getRings(this.rod3).length === 0
+            this.ringDisplay.getRings(this.rod1).length === 0 &&
+            this.ringDisplay.getRings(this.rod2).length === 0 &&
+            this.ringDisplay.getRings(this.rod3).length === 0
         ) {
             if (this.rings_variant === "three") {
                 const ring1 = new RingComponent(200);
                 const ring2 = new RingComponent(175);
                 const ring3 = new RingComponent(150);
-                this.display.setRings(this.rod1, [ring1, ring2, ring3]);
+                this.ringDisplay.setRings(this.rod1, [ring1, ring2, ring3]);
             } else if (this.rings_variant === "five") {
                 const ring1 = new RingComponent(200);
                 const ring2 = new RingComponent(175);
                 const ring3 = new RingComponent(150);
                 const ring4 = new RingComponent(125);
                 const ring5 = new RingComponent(100);
-                this.display.setRings(this.rod1, [
+                this.ringDisplay.setRings(this.rod1, [
                     ring1,
                     ring2,
                     ring3,
@@ -86,7 +86,7 @@ export class MainComponent extends EzComponent {
                 const ring5 = new RingComponent(100);
                 const ring6 = new RingComponent(75);
                 const ring7 = new RingComponent(50);
-                this.display.setRings(this.rod1, [
+                this.ringDisplay.setRings(this.rod1, [
                     ring1,
                     ring2,
                     ring3,
@@ -123,8 +123,8 @@ export class MainComponent extends EzComponent {
         }
     }
     moveRing(sourcerod: RodComponent, destinationrod: RodComponent) {
-        const sourcelist = this.display.getRings(sourcerod);
-        const destinationlist = this.display.getRings(destinationrod);
+        const sourcelist = this.ringDisplay.getRings(sourcerod);
+        const destinationlist = this.ringDisplay.getRings(destinationrod);
 
         if (sourcelist.length === 0) {
             EzDialog.popup(this, "Source rod is empty.", "Error:");
@@ -147,24 +147,24 @@ export class MainComponent extends EzComponent {
             return;
         } else {
             destinationlist.push(movedring);
-            this.display.setRings(sourcerod, sourcelist);
-            this.display.setRings(destinationrod, destinationlist);
+            this.ringDisplay.setRings(sourcerod, sourcelist);
+            this.ringDisplay.setRings(destinationrod, destinationlist);
         }
         if (
             this.rings_variant === "three" &&
-            this.display.getRings(this.rod3).length === 3
+            this.ringDisplay.getRings(this.rod3).length === 3
         ) {
             EzDialog.popup(this, "You win!", "Congratulations:");
             return;
         } else if (
             this.rings_variant === "five" &&
-            this.display.getRings(this.rod3).length === 5
+            this.ringDisplay.getRings(this.rod3).length === 5
         ) {
             EzDialog.popup(this, "You win!", "Congratulations:");
             return;
         } else if (
             this.rings_variant === "seven" &&
-            this.display.getRings(this.rod3).length === 7
+            this.ringDisplay.getRings(this.rod3).length === 7
         ) {
             EzDialog.popup(this, "You win!", "Congratulations:");
             return;
@@ -172,8 +172,8 @@ export class MainComponent extends EzComponent {
     }
     @Click("reset")
     onreset() {
-        this.display.setRings(this.rod1, []);
-        this.display.setRings(this.rod2, []);
-        this.display.setRings(this.rod3, []);
+        this.ringDisplay.setRings(this.rod1, []);
+        this.ringDisplay.setRings(this.rod2, []);
+        this.ringDisplay.setRings(this.rod3, []);
     }
 }
