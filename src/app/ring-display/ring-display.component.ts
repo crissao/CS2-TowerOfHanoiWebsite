@@ -30,26 +30,27 @@ export class RingDisplayComponent extends EzComponent {
 
     private clearRings(rodId: string) {
         if (rodId === "rod1") {
-                this.rings1.forEach((ring) => this.removeComponent(ring));
-                this.rings1 = [];
-        } else if (rodId === "rod2"){
-                this.rings2.forEach((ring) => this.removeComponent(ring));
-                this.rings2 = [];
+            this.rings1.forEach((ring) => this.removeComponent(ring));
+            this.rings1 = [];
+        } else if (rodId === "rod2") {
+            this.rings2.forEach((ring) => this.removeComponent(ring));
+            this.rings2 = [];
         } else {
-                this.rings3.forEach((ring) => this.removeComponent(ring));
-                this.rings3 = [];
+            this.rings3.forEach((ring) => this.removeComponent(ring));
+            this.rings3 = [];
         }
-
     }
 
     private assignRings(rod: RodComponent, rings: RingComponent[]) {
         const targetRingsArray = this.getRings(rod);
-        rings.forEach((ring) => {
+        const startIndex = targetRingsArray.length;
+
+        rings.forEach((ring, index) => {
             targetRingsArray.push(ring);
-        });
-        targetRingsArray.forEach((ring,index) => {
-            ring.setTopPosition(index, rod.getId());
-            ring.setLeftPosition(index, rod.getId());
+            const positionIndex = startIndex + index;
+            ring.setBottomPosition(positionIndex);
+            ring.setLeftPosition(rod.getId());
+            console.log(index);
             this.addComponent(ring, "ringContainer");
         });
     }

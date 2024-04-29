@@ -37,14 +37,14 @@ export class RingComponent extends EzComponent {
     color: string;
     @BindStyleToNumberAppendPx("ring", "left")
     left: number = 0;
-    @BindStyleToNumberAppendPx("ring", "top")
-    top: number = 0;
+    @BindStyleToNumberAppendPx("ring", "bottom")
+    bottom: number = 0;
     constructor(size: number) {
         super(html, css);
         this.size = size;
         this.color = getRandomColor();
     }
-    setLeftPosition(i: number, rodId: string) {
+    setLeftPosition(rodId: string) {
         if (rodId === "rod1") {
             if (this.size === 200) {
                 this.left = 263;
@@ -97,57 +97,7 @@ export class RingComponent extends EzComponent {
             }
         }
     }
-    setTopPosition(i: number, rodId: string) {
-        if (rodId === "rod1") {
-            if (i === 0) {
-                this.top = 280;
-            } else if (i === 1) {
-                this.top = 260;
-            } else if (i === 2) {
-                this.top = 240;
-            } else if (i === 3) {
-                this.top = 220;
-            } else if (i === 4) {
-                this.top = 200;
-            } else if (i === 5) {
-                this.top = 180;
-            } else if (i === 6) {
-                this.top = 160;
-            }
-        }
-        if (rodId === "rod2") {
-            if (i === 0) {
-                this.top = 280;
-            } else if (i === 1) {
-                this.top = 260;
-            } else if (i === 2) {
-                this.top = 240;
-            } else if (i === 3) {
-                this.top = 220;
-            } else if (i === 4) {
-                this.top = 200;
-            } else if (i === 5) {
-                this.top = 180;
-            } else if (i === 6) {
-                this.top = 160;
-            }
-        }
-        if (rodId === "rod3") {
-            if (i === 0) {
-                this.top = 280;
-            } else if (i === 1) {
-                this.top = 260;
-            } else if (i === 2) {
-                this.top = 240;
-            } else if (i === 3) {
-                this.top = 220;
-            } else if (i === 4) {
-                this.top = 200;
-            } else if (i === 5) {
-                this.top = 180;
-            } else if (i === 6) {
-                this.top = 160;
-            }
-        }
+    setBottomPosition(i: number) {
+        this.bottom = 20 * i + 100;
     }
 }
