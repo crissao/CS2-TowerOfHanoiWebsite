@@ -2,13 +2,17 @@
     top: 50px;
     left: 0px;
     position: absolute;
+    z-index: 0;
 }
-#rings1{
+#rings1 {
     position: absolute;
+    z-index: 1;
 }
-#rings2{
+#rings2 {
     position: absolute;
+    z-index: 1;
 }
-#rings3{
+#rings3 {
     position: absolute;
+    z-index: 1;
 }

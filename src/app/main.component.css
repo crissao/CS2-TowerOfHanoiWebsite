@@ -45,7 +45,7 @@
     left: 215px;
     right: 215px;
     margin: 70px;
-    z-index: 2;
+    z-index: 3;
     border-radius: 10px;
 }
 #X-out {
@@ -107,14 +107,61 @@
     left: 0px;
 }
 #rod1 {
+    top: 150px;
     left: 350px;
     position: absolute;
 }
+#rod1-background {
+    left: 345px;
+    width: 35px;
+    height: 210px;
+    position: absolute;
+    top: 245px;
+}
+#base1-background {
+    width: 210px;
+    height: 35px;
+    top: 200px;
+    right: 87px;
+    position: relative;
+}
+
 #rod2 {
+    top: 150px;
     left: 700px;
     position: absolute;
 }
+#rod2-background {
+    width: 35px;
+    height: 210px;
+    left: 695px;
+    position: absolute;
+    top: 245px;
+}
+#base2-background {
+    width: 210px;
+    height: 35px;
+    top: 200px;
+    right: 87px;
+    position: relative;
+}
+
 #rod3 {
+    top: 150px;
     left: 1050px;
     position: absolute;
+}
+#rod3-background {
+    width: 35px;
+    left: 1045px;
+    height: 210px;
+    position: absolute;
+    top: 245px;
+}
+#base3-background {
+    width: 210px;
+    height: 35px;
+    top: 200px;
+    right: 87px;
+    position: relative;
 }

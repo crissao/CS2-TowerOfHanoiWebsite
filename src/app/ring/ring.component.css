@@ -10,4 +10,5 @@
         url("assets/other-wood-grain.jpeg");
     border-color: black;
     border-width: 1px;
+    z-index: 2;
 }

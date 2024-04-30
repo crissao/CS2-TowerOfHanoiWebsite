@@ -8,6 +8,8 @@ import {
     Click,
     BindVisibleToBoolean,
     EzDialog,
+    GenericEvent,
+    BindStyle,
 } from "@gsilber/webez";
 import { HeaderComponent } from "./header/header.component";
 import { RodComponent } from "./rod/rod.component";
@@ -24,9 +26,24 @@ export class MainComponent extends EzComponent {
     private ringDisplay: RingDisplayComponent = new RingDisplayComponent();
     private sourcerod: RodComponent | null = null;
     private destinationrod: RodComponent | null = null;
+    private rod1clicked: boolean = false;
+    private rod2clicked: boolean = false;
+    private rod3clicked: boolean = false;
     private rod1: RodComponent = new RodComponent("rod1");
+    @BindStyle("rod1-background", "backgroundColor")
+    private rod1background: string = "rgb(255, 238, 175)";
+    @BindStyle("base1-background", "backgroundColor")
+    private base1background: string = "rgb(255, 238, 175)";
     private rod2: RodComponent = new RodComponent("rod2");
+    @BindStyle("rod2-background", "backgroundColor")
+    private rod2background: string = "rgb(255, 238, 175)";
+    @BindStyle("base2-background", "backgroundColor")
+    private base2background: string = "rgb(255, 238, 175)";
     private rod3: RodComponent = new RodComponent("rod3");
+    @BindStyle("rod3-background", "backgroundColor")
+    private rod3background: string = "rgb(255, 238, 175)";
+    @BindStyle("base3-background", "backgroundColor")
+    private base3background: string = "rgb(255, 238, 175)";
     private moves: number = 0;
     @BindVisibleToBoolean("instructions")
     private visible: boolean = true;
@@ -101,16 +118,61 @@ export class MainComponent extends EzComponent {
             return;
         }
     }
+    @GenericEvent("rod1", "mouseover")
+    onRod1Hover() {
+        this.rod1background = "white";
+        this.base1background = "white";
+    }
+    @GenericEvent("rod2", "mouseover")
+    onRod2Hover() {
+        this.rod2background = "white";
+        this.base2background = "white";
+    }
+    @GenericEvent("rod3", "mouseover")
+    onRod3Hover() {
+        this.rod3background = "white";
+        this.base3background = "white";
+    }
+    @GenericEvent("rod1", "mouseleave")
+    onRod1Leave() {
+        if (!this.rod1clicked) {
+            this.rod1background = "rgb(255, 238, 175)";
+            this.base1background = "rgb(255, 238, 175)";
+        }
+    }
+    @GenericEvent("rod2", "mouseleave")
+    onRod2Leave() {
+        if (!this.rod2clicked) {
+            this.rod2background = "rgb(255, 238, 175)";
+            this.base2background = "rgb(255, 238, 175)";
+        }
+    }
+    @GenericEvent("rod3", "mouseleave")
+    onRod3Leave() {
+        if (!this.rod3clicked) {
+            this.rod3background = "rgb(255, 238, 175)";
+            this.base3background = "rgb(255, 238, 175)";
+        }
+    }
     @Click("rod1")
     onRod1Click() {
+        this.rod1clicked = true;
+        this.rod1background = "white";
+        this.base1background = "white";
         this.onRodClicks(this.rod1);
     }
     @Click("rod2")
     onRod2Click() {
+        this.rod2clicked = true;
+        this.rod2background = "white";
+        this.base2background = "white";
         this.onRodClicks(this.rod2);
     }
     @Click("rod3")
     onRod3Click() {
+        this.rod3clicked = true;
+        this.rod3background = "white";
+        this.base3background = "white";
         this.onRodClicks(this.rod3);
     }
     onRodClicks(rod: RodComponent) {
@@ -121,6 +183,12 @@ export class MainComponent extends EzComponent {
             this.moveRing(this.sourcerod, this.destinationrod);
             this.sourcerod = null;
             this.destinationrod = null;
+            this.rod1clicked = false;
+            this.rod2clicked = false;
+            this.rod3clicked = false;
+            this.onRod1Leave();
+            this.onRod2Leave();
+            this.onRod3Leave();
         }
     }
     moveRing(sourcerod: RodComponent, destinationrod: RodComponent) {
@@ -161,7 +229,9 @@ export class MainComponent extends EzComponent {
         ) {
             EzDialog.popup(
                 this,
-                "You win! <br> Total number of moves: " + this.moves + "<br> Minimum number of possible moves: 7",
+                "You win! <br> Total number of moves: " +
+                    this.moves +
+                    "<br> Minimum number of possible moves: 7",
                 "Congratulations:",
             );
             return;
@@ -197,5 +267,11 @@ export class MainComponent extends EzComponent {
         this.ringDisplay.setRings(this.rod2, []);
         this.ringDisplay.setRings(this.rod3, []);
         this.moves = 0;
+        this.rod1clicked = false;
+        this.rod2clicked = false;
+        this.rod3clicked = false;
+        this.onRod1Leave();
+        this.onRod2Leave();
+        this.onRod3Leave();
     }
 }
