@@ -27,6 +27,7 @@ export class MainComponent extends EzComponent {
     private rod1: RodComponent = new RodComponent("rod1");
     private rod2: RodComponent = new RodComponent("rod2");
     private rod3: RodComponent = new RodComponent("rod3");
+    private moves: number = 0;
     @BindVisibleToBoolean("instructions")
     private visible: boolean = true;
     @BindValue("rings-variant")
@@ -128,7 +129,8 @@ export class MainComponent extends EzComponent {
 
         if (sourcelist.length === 0) {
             EzDialog.popup(this, "Source rod is empty.", "Error:");
-            return;
+            this.ringDisplay.setRings(sourcerod, sourcelist);
+            this.ringDisplay.setRings(destinationrod, destinationlist);
         }
         const movedring = sourcelist.pop();
 
@@ -137,36 +139,55 @@ export class MainComponent extends EzComponent {
         }
         if (
             destinationlist.length > 0 &&
-            destinationlist[destinationlist.length - 1].size < movedring.size
+            destinationlist[destinationlist.length - 1].width < movedring.width
         ) {
             EzDialog.popup(
                 this,
                 "Cannot stack larger ring on top of smaller ring.",
                 "Error:",
             );
-            return;
+            sourcelist.push(movedring);
+            this.ringDisplay.setRings(sourcerod, sourcelist);
+            this.ringDisplay.setRings(destinationrod, destinationlist);
         } else {
             destinationlist.push(movedring);
             this.ringDisplay.setRings(sourcerod, sourcelist);
             this.ringDisplay.setRings(destinationrod, destinationlist);
+            this.moves += 1;
         }
         if (
             this.rings_variant === "three" &&
             this.ringDisplay.getRings(this.rod3).length === 3
         ) {
-            EzDialog.popup(this, "You win!", "Congratulations:");
+            EzDialog.popup(
+                this,
+                "You win! <br> Total number of moves: " + this.moves + "<br> Minimum number of possible moves: 7",
+                "Congratulations:",
+            );
             return;
         } else if (
             this.rings_variant === "five" &&
             this.ringDisplay.getRings(this.rod3).length === 5
         ) {
-            EzDialog.popup(this, "You win!", "Congratulations:");
+            EzDialog.popup(
+                this,
+                "You win! <br> Total number of moves: " +
+                    this.moves +
+                    "<br> Minimum number of possible moves: 31",
+                "Congratulations:",
+            );
             return;
         } else if (
             this.rings_variant === "seven" &&
             this.ringDisplay.getRings(this.rod3).length === 7
         ) {
-            EzDialog.popup(this, "You win!", "Congratulations:");
+            EzDialog.popup(
+                this,
+                "You win! <br> Total number of moves: " +
+                    this.moves +
+                    "<br> Minimum number of possible moves: 127",
+                "Congratulations:",
+            );
             return;
         }
     }
@@ -175,5 +196,6 @@ export class MainComponent extends EzComponent {
         this.ringDisplay.setRings(this.rod1, []);
         this.ringDisplay.setRings(this.rod2, []);
         this.ringDisplay.setRings(this.rod3, []);
+        this.moves = 0;
     }
 }

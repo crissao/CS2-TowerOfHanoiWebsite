@@ -50,7 +50,6 @@ export class RingDisplayComponent extends EzComponent {
             const positionIndex = startIndex + index;
             ring.setBottomPosition(positionIndex);
             ring.setLeftPosition(rod.getId());
-            console.log(index);
             this.addComponent(ring, "ringContainer");
         });
     }

@@ -1,27 +1,49 @@
+#body {
+    top: 0px;
+    left: 0px;
+    width: 1440px;
+    height: 800px;
+    position: absolute;
+    background-color: rgb(255, 238, 175);
+}
+#options {
+    top: 87px;
+    left: 300px;
+    width: 850px;
+    height: 50px;
+    position: absolute;
+    background-color: rgb(113, 88, 63);
+    border-radius: 10px;
+}
 #header {
-    background-color: rgb(255, 255, 255);
     color: white;
-    padding: 10px;
+    padding: 0px;
     text-align: center;
 }
+
 #instruction-button {
     position: absolute;
-    width: 25px;
-    top: 105px;
-    right: 20px;
-    background-color: rgb(255, 250, 111);
-    border-radius: 5px;
+    color: rgb(141, 109, 78);
+    background-color: rgb(242, 255, 201);
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    left: 750px;
+    top: 95px;
+    font-family: fantasy;
+    font-size: 20px;
 }
 #instructions {
     position: absolute;
-    background-color: rgba(182, 182, 182, 0.796);
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    background-color: rgba(141, 109, 78, 0.861);
+    color: rgb(242, 255, 201);
+    font-size: 25px;
+    font-family: fantasy;
     text-align: left;
     padding: 25px;
     top: 125px;
     left: 215px;
+    right: 215px;
     margin: 70px;
     z-index: 2;
     border-radius: 10px;
@@ -35,35 +57,51 @@
 }
 #start {
     position: absolute;
-    background-color: rgb(145, 244, 145);
-    border-radius: 5px;
-    left: 15px;
+    color: rgb(141, 109, 78);
+    background-color: rgb(242, 255, 201);
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    left: 350px;
+    top: 95px;
+    font-family: fantasy;
+    font-size: 20px;
 }
 #reset {
     position: absolute;
-    background-color: rgb(227, 146, 146);
-    border-radius: 5px;
-    top: 110px;
-    left: 15px;
+    color: rgb(141, 109, 78);
+    background-color: rgb(242, 255, 201);
+    width: 100px;
+    height: 35px;
+    border-radius: 20px;
+    left: 550px;
+    top: 95px;
+    font-family: fantasy;
+    font-size: 20px;
 }
 #rings-variant {
     position: absolute;
-    background-color: rgb(255, 255, 255);
-    top: 80px;
-    left: 1290px;
-    order: 2;
-    border-radius: 5px;
+    color: rgb(141, 109, 78);
+    background-color: rgb(242, 255, 201);
+    text-align: center;
+    width: 150px;
+    height: 35px;
+    border-radius: 20px;
+    left: 950px;
+    top: 95px;
+    font-family: fantasy;
+    font-size: 20px;
 }
 #creator {
     position: absolute;
-    color: black;
-    top: 620px;
+    color: rgb(113, 88, 63);
+    top: 750px;
     left: 15px;
+    font-family: fantasy;
 }
 #ring-display {
-    background-color: rgba(255, 255, 255, 0.185);
-    position: relative;
-    top: 50px;
+    position: absolute;
+    top: 150px;
     width: 1400px;
     height: 400px;
     left: 0px;

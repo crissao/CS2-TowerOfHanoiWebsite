@@ -1,8 +1,10 @@
 .header-content {
-    background-color: #555;
-    color: rgb(255, 255, 255);
+    background-image: url("assets/header-background.jpg");
+    background-color: rgb(141, 109, 78);
+    color: rgb(242, 255, 201);
     padding: 10px;
-    font-size: 30px;
+    font-size: 50px;
+    font-family: luminari, fantasy;
     font-weight: bold;
     text-align: center;
     border-radius: 5px;
