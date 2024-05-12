@@ -9,4 +9,4 @@ Replace the empty whitespace with an `X` (e.g., `- [X]`, but do not include the 
 - [X] VICTORY
 - [X] RESET
 - [X] VARIANTS
-- [ ] TESTS
+- [X] TESTS
