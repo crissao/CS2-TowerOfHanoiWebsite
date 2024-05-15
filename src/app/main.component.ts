@@ -57,20 +57,34 @@ export class MainComponent extends EzComponent {
         this.addComponent(this.rod3, "rod3");
         this.addComponent(this.ringDisplay, "ring-display");
     }
+    /**
+     * @description changes number of rings used in game based on the value clicked from dropdown menu (3, 5, or 7)
+     * @param event
+     */
     @Change("rings-variant")
     onRingsChange(event: ValueEvent) {
         this.rings_variant = event.value;
     }
+    /**
+     * @description makes instructions visible on button click
+     */
     @Click("instruction-button")
     instruct() {
         if (!this.visible) {
             this.visible = true;
         }
     }
+    /**
+     * @description makes instructions invisible on button click
+     */
     @Click("X-out")
     X_out() {
         this.visible = false;
     }
+    /**
+     * @description starts game: places designated number of rings on rod1 in ringDisplay (only works when game has already been reset, otherwise returns nothing)
+     * @returns
+     */
     @Click("start")
     onStart() {
         if (
@@ -118,21 +132,33 @@ export class MainComponent extends EzComponent {
             return;
         }
     }
+    /**
+     * @description highlights rod1 on mouseover
+     */
     @GenericEvent("rod1", "mouseover")
     onRod1Hover() {
         this.rod1background = "white";
         this.base1background = "white";
     }
+    /**
+     * @description highlights rod2 on mouseover
+     */
     @GenericEvent("rod2", "mouseover")
     onRod2Hover() {
         this.rod2background = "white";
         this.base2background = "white";
     }
+    /**
+     * @description highlights rod3 on mouseover
+     */
     @GenericEvent("rod3", "mouseover")
     onRod3Hover() {
         this.rod3background = "white";
         this.base3background = "white";
     }
+    /**
+     * @description unhighlights rod1 on mouseleave if rod1clicked is not clicked
+     */
     @GenericEvent("rod1", "mouseleave")
     onRod1Leave() {
         if (!this.rod1clicked) {
@@ -140,6 +166,9 @@ export class MainComponent extends EzComponent {
             this.base1background = "rgb(255, 238, 175)";
         }
     }
+    /**
+     * @description unhighlights rod2 on mouseleave if rod2clicked is not clicked
+     */
     @GenericEvent("rod2", "mouseleave")
     onRod2Leave() {
         if (!this.rod2clicked) {
@@ -147,6 +176,9 @@ export class MainComponent extends EzComponent {
             this.base2background = "rgb(255, 238, 175)";
         }
     }
+    /**
+     * @description unhighlights rod3 on mouseleave if rod3clicked is not clicked
+     */
     @GenericEvent("rod3", "mouseleave")
     onRod3Leave() {
         if (!this.rod3clicked) {
@@ -154,6 +186,9 @@ export class MainComponent extends EzComponent {
             this.base3background = "rgb(255, 238, 175)";
         }
     }
+    /**
+     * @description makes rod1clicked true, highlights rod1, and calls onRodClicks method with rod1 as argument
+     */
     @Click("rod1")
     onRod1Click() {
         this.rod1clicked = true;
@@ -161,6 +196,9 @@ export class MainComponent extends EzComponent {
         this.base1background = "white";
         this.onRodClicks(this.rod1);
     }
+    /**
+     * @description makes rod2clicked true, highlights rod2, and calls onRodClicks method with rod2 as argument
+     */
     @Click("rod2")
     onRod2Click() {
         this.rod2clicked = true;
@@ -168,6 +206,9 @@ export class MainComponent extends EzComponent {
         this.base2background = "white";
         this.onRodClicks(this.rod2);
     }
+    /**
+     * @description makes rod3clicked true, highlights rod3, and calls onRodClicks method with rod3 as argument
+     */
     @Click("rod3")
     onRod3Click() {
         this.rod3clicked = true;
@@ -175,6 +216,10 @@ export class MainComponent extends EzComponent {
         this.base3background = "white";
         this.onRodClicks(this.rod3);
     }
+    /**
+     * @description assigns rod clicked (passed in as parameter) to be either this.sourcerod or this.destinationrod, depending on current values of this.sourcerod and this.destinationrod
+     * @param rod
+     */
     onRodClicks(rod: RodComponent) {
         if (this.sourcerod === null) {
             this.sourcerod = rod;
@@ -191,6 +236,12 @@ export class MainComponent extends EzComponent {
             this.onRod3Leave();
         }
     }
+    /**
+     * @description provides popup error if ring movement is invalid, otherwise moves top ring from sourcelist to destination list, and returns if game is won; uses setRings method to display rings
+     * @param sourcerod
+     * @param destinationrod
+     * @returns
+     */
     moveRing(sourcerod: RodComponent, destinationrod: RodComponent) {
         const sourcelist = this.ringDisplay.getRings(sourcerod);
         const destinationlist = this.ringDisplay.getRings(destinationrod);
@@ -261,6 +312,9 @@ export class MainComponent extends EzComponent {
             return;
         }
     }
+    /**
+     * @description clears rings from screen and empties ring arrays
+     */
     @Click("reset")
     onreset() {
         this.ringDisplay.setRings(this.rod1, []);

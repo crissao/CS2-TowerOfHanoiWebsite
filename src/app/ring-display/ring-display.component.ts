@@ -3,7 +3,10 @@ import html from "./ring-display.component.html";
 import css from "./ring-display.component.css";
 import { RingComponent } from "../ring/ring.component";
 import { RodComponent } from "../rod/rod.component";
-
+/**
+ * @description used to display the array of rings on appropriate rod
+ * @extends EzComponent
+ */
 export class RingDisplayComponent extends EzComponent {
     private rings1: RingComponent[] = [];
     private rings2: RingComponent[] = [];
@@ -11,12 +14,21 @@ export class RingDisplayComponent extends EzComponent {
     constructor() {
         super(html, css);
     }
+    /**
+     * @description calls clearRings and assignRings to display rings passed in by parameter on rod passed in by parameter
+     * @param rod 
+     * @param rings 
+     */
     setRings(rod: RodComponent, rings: RingComponent[]) {
         const rodId = rod.getId();
         this.clearRings(rodId);
         this.assignRings(rod, rings);
     }
-
+    /**
+     * @description uses rod ID to retrieve rings located on particular rod
+     * @param rod 
+     * @returns rings associated with rod parameter
+     */
     getRings(rod: RodComponent) {
         const rodId = rod.getId();
         if (rodId === "rod1") {
@@ -27,7 +39,10 @@ export class RingDisplayComponent extends EzComponent {
             return this.rings3;
         }
     }
-
+    /**
+     * @description removes all rings from display
+     * @param rodId 
+     */
     private clearRings(rodId: string) {
         if (rodId === "rod1") {
             this.rings1.forEach((ring) => this.removeComponent(ring));
@@ -40,7 +55,11 @@ export class RingDisplayComponent extends EzComponent {
             this.rings3 = [];
         }
     }
-
+    /**
+     * @description adds rings to appropriate rod on display
+     * @param rod 
+     * @param rings 
+     */
     private assignRings(rod: RodComponent, rings: RingComponent[]) {
         const targetRingsArray = this.getRings(rod);
         const startIndex = targetRingsArray.length;
