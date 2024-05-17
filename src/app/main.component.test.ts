@@ -17,7 +17,7 @@ describe("MainComponent", () => {
     });
     describe("onStart", () => {
         test("Starting with 'three' rings variant", () => {
-            component.onreset();
+            component.onReset();
             component.onStart();
             expect(component.ringDisplay.getRings(component.rod1).length).toBe(
                 3,
@@ -25,8 +25,8 @@ describe("MainComponent", () => {
         });
 
         test("Starting with 'five' rings variant", () => {
-            component.onreset();
-            component.rings_variant = "five";
+            component.onReset();
+            component.ringsVariant = "five";
             component.onStart();
             expect(component.ringDisplay.getRings(component.rod1).length).toBe(
                 5,
@@ -34,8 +34,8 @@ describe("MainComponent", () => {
         });
 
         test("Starting with 'seven' rings variant", () => {
-            component.onreset();
-            component.rings_variant = "seven";
+            component.onReset();
+            component.ringsVariant = "seven";
             component.onStart();
             expect(component.ringDisplay.getRings(component.rod1).length).toBe(
                 7,
