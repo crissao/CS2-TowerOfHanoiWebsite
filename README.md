@@ -1,5 +1,5 @@
-Final Project for CISC181 (Introduction to Computer Science 2)
+#Final Project for CISC181 (Introduction to Computer Science 2)
 
-Simple website design using WebEZ
+#Simple website design using WebEZ
 
-Tower of Hanoi Game
+#Tower of Hanoi Game
